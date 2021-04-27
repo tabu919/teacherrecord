@@ -54,8 +54,6 @@ class teacher(db.Model):
     def __repr__(self):
                 return f"{self.teacher_id}"
 
-
-
 ### Custom validator ###
 def must_not_be_blank(data):
     if not data:
