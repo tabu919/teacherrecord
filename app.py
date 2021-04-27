@@ -1,6 +1,6 @@
 from flask import Flask,jsonify,request,make_response
 from http import HTTPStatus
-from flask_sqlalchemy import SQLAlchemy  #thorugh python change is databse
+from flask_sqlalchemy import SQLAlchemy  #thorugh python change is database
 from marshmallow import fields,ValidationError #handle ValidationError
 from marshmallow_sqlalchemy import ModelSchema
 from sqlalchemy.types import TypeDecorator
@@ -172,8 +172,8 @@ def delete_teacher_by_id(teacher_id):
    if get_teacher:
       db.session.delete(get_teacher)
       db.session.commit()
-      return make_response(jsonify({'message':'Teacher Deleted!'})),HTTPStatus.OK # tablet with tabletid deleted sucessfully
-   return jsonify({'message': 'teacher not found'}), HTTPStatus.NOT_FOUND  #error:if tablet not found in database
+      return make_response(jsonify({'message':'Teacher Deleted!'})),HTTPStatus.OK # teacher with teacherid deleted sucessfully
+   return jsonify({'message': 'teacher not found'}), HTTPStatus.NOT_FOUND  #error:if teacher not found in database
 
 
 
