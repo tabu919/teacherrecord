@@ -1,6 +1,6 @@
-from flask import Flask,jsonify,request,make_response
+from flask import Flask, jsonify, request, make_response
 from http import HTTPStatus
-from flask_sqlalchemy import SQLAlchemy  #thorugh python change is database
+from flask_sqlalchemy import SQLAlchemy  
 from marshmallow import fields,ValidationError #handle ValidationError
 from marshmallow_sqlalchemy import ModelSchema
 from sqlalchemy.types import TypeDecorator
@@ -9,16 +9,15 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
 
-
 ### ERRORS HANDLING ##
 def page_not_found(e):  # error:URL Not Found
     return jsonify({'message': 'URL not found !!'}), HTTPStatus.NOT_FOUND
 def BAD_REQUEST(e): #errpr: check syntax error, Invalid Request message
-    return jsonify({'message': 'BAD REQUEST !! Syntax,Invalid Request Message Framing,Or Deceptive Request Routing'}),HTTPStatus.BAD_REQUEST
+    return jsonify({'message': 'BAD REQUEST !! Syntax, Invalid Request Message Framing, Or Deceptive Request Routing'}), HTTPStatus.BAD_REQUEST
 def method_not_allowed(e): # error:when you pass wrong url
     return jsonify({'message': 'Method Not Allowed !!'}), HTTPStatus.METHOD_NOT_ALLOWED
 
-### DATABASE DEFINATION ###
+### DATABASE DEFINITION ###
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI']="sqlite:///teacher.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']= False
@@ -36,10 +35,10 @@ db=SQLAlchemy(app)
 ##### MODELS #####
 
 class teacher(db.Model):
-    teacher_id=db.Column(db.Integer,primary_key=True)
-    teacher_name=db.Column(db.String(20),nullable=False)
-    subject_id=db.Column(db.Integer,nullable=False)
-    subject_name=db.Column(db.String(20),nullable=False)
+    teacher_id=db.Column(db.Integer, primary_key=True)
+    teacher_name=db.Column(db.String(20), nullable=False)
+    subject_id=db.Column(db.Integer, nullable=False)
+    subject_name=db.Column(db.String(20), nullable=False)
     
 
     def create(self):
@@ -47,7 +46,7 @@ class teacher(db.Model):
        db.session.commit()
        return self
 
-    def __init__(self,teacher_name,subject_id,subject_name):
+    def __init__(self, teacher_name, subject_id, subject_name):
             self.teacher_name = teacher_name
             self.subject_id = subject_id
             self.subject_name = subject_name
