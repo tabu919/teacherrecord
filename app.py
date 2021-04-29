@@ -173,8 +173,7 @@ def delete_teacher_by_id(teacher_id):
    return jsonify({'message': 'teacher not found'}), HTTPStatus.NOT_FOUND  #error:if teacher not found in database
 
 
-
   
 
 if __name__=="__main__":
-    app.run(debug=True,host='0.0.0.0',port='5000')
+    app.run(debug=True,host='52.90.172.50',port='5000')
